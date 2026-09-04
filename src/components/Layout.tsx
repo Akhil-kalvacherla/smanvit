@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import gsap from "gsap";
@@ -161,16 +161,19 @@ export function Navbar() {
         <ul className="hidden items-center gap-12 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <Link
+              <NavLink
                 to={link.to}
-                activeOptions={{ exact: link.to === "/" }}
-                className="pb-1 text-[15px] font-medium leading-none text-ink/75 transition-colors hover:text-brand"
-                activeProps={{
-                  className: "pb-1 text-[15px] font-medium leading-none text-brand border-b-2 border-brand",
-                }}
+                end={link.to === "/"}
+                className={({ isActive }) =>
+                  `pb-1 text-[15px] font-medium leading-none transition-colors hover:text-brand ${
+                    isActive && link.label !== "Blogs" && link.label !== "Partnership"
+                      ? "text-brand border-b-2 border-brand"
+                      : "text-ink/75"
+                  }`
+                }
               >
                 {link.label}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -198,13 +201,20 @@ export function Navbar() {
         <ul className="mx-6 mb-4 space-y-1 rounded-2xl bg-soft-grey p-3 lg:hidden">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <Link
+              <NavLink
                 to={link.to}
+                end={link.to === "/"}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2 text-[15px] font-medium leading-none text-ink hover:bg-background"
+                className={({ isActive }) =>
+                  `block rounded-lg px-3 py-2 text-[15px] font-medium leading-none hover:bg-background ${
+                    isActive && link.label !== "Blogs" && link.label !== "Partnership"
+                      ? "bg-background text-brand"
+                      : "text-ink"
+                  }`
+                }
               >
                 {link.label}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
