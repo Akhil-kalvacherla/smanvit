@@ -1,0 +1,6 @@
+{
+  "name": "Demosmanv",
+  "description": "Enterprise IT services, digital transformation, and business solutions application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
