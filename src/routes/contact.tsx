@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { PageHero, Reveal, SiteLayout } from "@/components/Layout";
 import { submitToGoogleSheet } from "@/lib/google-sheets";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const TITLE = "Contact SMANV Info Tech | Let's Build Something Great";
 const DESCRIPTION =
@@ -98,6 +100,17 @@ function Field({
 }
 
 function ContactPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#contact-form") {
+      const el = document.getElementById("contact-form");
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+      }
+    }
+  }, [location.hash]);
+
   const [openFaq, setOpenFaq] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
@@ -158,23 +171,23 @@ function ContactPage() {
           <h1 className="text-[40px] font-bold leading-[1.2] text-[#111827] sm:text-[56px] lg:text-[64px] font-raleway">
             Let's Build Something Great
             <br />
-            Together
+            <span className="text-[#188BF6]">Together</span>
           </h1>
           <p className="mx-auto mt-6 max-w-[750px] text-[16px] font-medium leading-relaxed text-[#374151] sm:text-[18px] font-nunito">
             Whether you have a project in mind, a question about our services, or just want to explore what's possible, we'd love to hear from you.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <button className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-blue-600 font-nunito">
+            <button onClick={() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })} className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[15px] font-semibold text-white font-nunito hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Book a Free Consultation
             </button>
-            <button className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[15px] font-semibold text-[#188BF6] transition-colors hover:bg-[#EAF3FF] font-nunito">
+            <button onClick={() => window.location.href='/it-services'} className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[15px] font-semibold text-[#188BF6] font-nunito hover:border-transparent hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Explore Our Services
             </button>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1080px] px-6 py-10">
+      <section id="contact-form" className="mx-auto max-w-[1080px] px-6 py-10">
         <Reveal>
           <div className="grid overflow-hidden rounded-[24px] bg-white shadow-[0_15px_60px_rgba(0,0,0,0.06)] md:grid-cols-[0.85fr_1.15fr]">
             <div className="relative overflow-hidden bg-[#188BF6] p-8 sm:p-10 text-white">
@@ -349,7 +362,7 @@ function ContactPage() {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-[800px] px-6 py-16">
+      <section className="mx-auto max-w-[1080px] px-6 py-16">
         <h2 className="text-center text-[32px] sm:text-[36px] font-semibold tracking-tight text-[#111827] font-raleway">
           Frequently Asked Questions
         </h2>

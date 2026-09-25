@@ -10,7 +10,7 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "5-signs-your-website-is-quietly-losing-you-customers",
+    slug: "signs-your-website-losing-customers",
     category: "Web Development",
     date: "May 11, 2026",
     readTime: "5 min read",
@@ -20,43 +20,43 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/assets/image 105.png",
   },
   {
-    slug: "ai-chatbots-for-small-business",
+    slug: "ai-chatbots-small-business-2026",
     category: "AI & Automation",
     date: "Mar 16, 2026",
-    readTime: "8 min read",
+    readTime: "5 min read",
     title: "AI Chatbots for Small Business: Why 2026 Is the Tipping Point",
     description:
-      "AI chatbots aren't just for big enterprises anymore. Here's what's actually changing in 2026, what a chatbot can realistically do for a sm...",
+      "AI chatbots aren't just for big enterprises anymore. Here's what's actually changing in 2026, what a chatbot can realistically do for a small business, and what to watch out for.",
     image: "/assets/image 106.png",
   },
   {
-    slug: "5-ways-business-automation-saves-small-businesses",
+    slug: "business-automation-small-business-hours-saved",
     category: "AI & Automation",
     date: "Feb 13, 2026",
     readTime: "5 min read",
     title: "5 Ways Business Automation Saves Small Businesses Hours Every Week",
     description:
-      "You don't need a tech team to automate your business. Here are 5 practical automations small businesses in India are using right n...",
+      "You don't need a tech team to automate your business. Here are 5 practical automations small businesses in India are using right now to save real hours every week.",
     image: "/assets/image 107.png",
   },
   {
-    slug: "how-long-does-seo-actually-take",
+    slug: "how-long-does-seo-take-results",
     category: "SEO & Local Search",
     date: "Jan 20, 2026",
     readTime: "5 min read",
     title: "How Long Does SEO Actually Take to Show Results? An Honest Timeline",
     description:
-      "No agency wants to tell you the truth about SEO timelines. Here's an honest, realistic breakdown of when SEO actually starts working and wh...",
+      "No agency wants to tell you the truth about SEO timelines. Here's an honest, realistic breakdown of when SEO actually starts working — and why the wait is worth it.",
     image: "/assets/image 108.png",
   },
   {
-    slug: "how-much-should-a-business-website-cost",
+    slug: "how-much-should-business-website-cost-india-2026",
     category: "Web Development",
     date: "Jan 8, 2026",
-    readTime: "7 min read",
+    readTime: "5 min read",
     title: "How Much Should a Business Website Cost in India in 2026?",
     description:
-      "Real pricing, not vague \"contact us for a quote.\" Here's what a business website actually costs in India in 2026, broken down by what you act...",
+      "Real pricing, not vague \"contact us for a quote.\" Here's what a business website actually costs in India in 2026, broken down by what you actually get at each tier.",
     image: "/assets/image 109.png",
   },
   {

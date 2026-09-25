@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PageHero, Reveal, SiteLayout } from "@/components/Layout";
 
 const TITLE = "About SMANV Info Tech | Engineers, Marketers & Strategists";
@@ -11,6 +12,7 @@ const LEADERS = [
     bio: "Former co-founder of Opendoor. Early staff at Spotify and Clearbit",
     image: "/assets/sam.jpg",
     imageAlt: "Dr. Sam K Kolli",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Mr. Manohar Dandu",
@@ -18,6 +20,7 @@ const LEADERS = [
     bio: "Driving operational excellence and financial strategy",
     image: "/assets/manohar.jpg",
     imageAlt: "Mr. Manohar Dandu",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Mr. Raj Kumar Battina",
@@ -25,6 +28,7 @@ const LEADERS = [
     bio: "Leading project execution and delivery, every client commitment is met, on time",
     image: "/assets/rajkumar.jpg",
     imageAlt: "Mr. Raj Kumar Battina",
+    linkedin: "https://www.linkedin.com/",
   },
 ] as const;
 
@@ -37,7 +41,7 @@ function AboutPage() {
         <Reveal className="relative mx-auto max-w-[900px] px-6 text-center" stagger={0.1}>
           <h1 className="text-[48px] sm:text-[64px] font-bold font-raleway leading-[1.15] tracking-tight text-black">
             Built to Serve<br />
-            Engineered to Scale<br />
+            <span className="text-[#188BF6]">Engineered</span> to Scale<br />
             Driven to Grow Your<br />
             Business
           </h1>
@@ -46,12 +50,12 @@ function AboutPage() {
             your growth
           </p>
           <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
-            <button className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[16px] font-medium font-nunito text-white shadow-sm transition-colors hover:bg-[#0076E5]">
+            <Link to="/contact#contact-form" className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[16px] font-medium font-nunito text-white shadow-sm hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Book a Free Consultation
-            </button>
-            <button className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[16px] font-medium font-nunito text-[#188BF6] transition-colors hover:bg-blue-50">
+            </Link>
+            <Link to="/it-services" className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[16px] font-medium font-nunito text-[#188BF6] hover:border-transparent hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Explore Our Services
-            </button>
+            </Link>
           </div>
         </Reveal>
       </section>
@@ -62,7 +66,7 @@ function AboutPage() {
         </h2>
 
         <Reveal className="mt-10 space-y-6" stagger={0.15}>
-          <div className="max-w-[720px] rounded-[28px] bg-soft-blue px-8 py-8 shadow-sm sm:px-10">
+          <div className="max-w-[720px] rounded-r-[32px] bg-soft-blue px-8 py-8 shadow-sm sm:px-10">
             <p className="text-[15px] sm:text-[16px] font-medium font-nunito leading-[1.6] text-black">
               SMANV Info Tech is a Hyderabad-based technology and digital marketing company with a
               global delivery mindset. We work with startups, growing businesses, and enterprises
@@ -70,7 +74,7 @@ function AboutPage() {
               systems, launch effective marketing campaigns, and scale with confidence.
             </p>
           </div>
-          <div className="ml-auto max-w-[720px] rounded-[28px] bg-soft-pink px-8 py-8 shadow-sm sm:px-10">
+          <div className="ml-auto max-w-[720px] rounded-l-[32px] bg-soft-blue px-8 py-8 shadow-sm sm:px-10">
             <p className="text-[15px] sm:text-[16px] font-medium font-nunito leading-[1.6] text-black">
               We combine the depth of a specialist engineering firm with the agility of a
               growth-focused partner. Our team covers web and app development, AI and automation,
@@ -120,10 +124,18 @@ function AboutPage() {
         </h2>
         <Reveal className="mt-12 grid gap-6 md:grid-cols-3" stagger={0.1}>
           {LEADERS.map((leader) => (
-            <article
+            <a
               key={leader.name}
-              className="relative overflow-hidden rounded-3xl bg-[#E2EFFE] shadow-sm transition-transform hover:-translate-y-1"
+              href={leader.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative block overflow-hidden rounded-3xl bg-[#E2EFFE] shadow-sm transition-transform hover:-translate-y-1"
             >
+              <img
+                src="/assets/linkedin.png"
+                alt="LinkedIn"
+                className="absolute right-4 top-4 z-10 size-6 object-contain"
+              />
               <div className="aspect-[3/4] w-full">
                 <img
                   src={leader.image!}
@@ -137,12 +149,12 @@ function AboutPage() {
                 <p className="mt-1 text-[11px] sm:text-[12px] font-medium text-white/70">{leader.role}</p>
                 <p className="mt-3 text-[13px] sm:text-[14px] font-medium leading-[1.5] text-white/90">{leader.bio}</p>
               </div>
-            </article>
+            </a>
           ))}
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-[1080px] px-6 py-14">
+      <section className="mx-auto max-w-[900px] px-6 py-14">
         <h2 className="text-center text-[32px] sm:text-[36px] font-bold font-raleway tracking-tight text-black">
           Delivery Advantage
         </h2>

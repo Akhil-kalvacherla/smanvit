@@ -137,7 +137,7 @@ function CapabilitiesPage() {
       <section className="relative bg-white pt-32 pb-16 px-6 overflow-hidden">
         <Reveal className="relative mx-auto flex max-w-[1080px] flex-col items-center text-center" stagger={0.1}>
           <h1 className="text-[40px] font-bold font-raleway leading-[1.1] tracking-tight text-black sm:text-[48px] md:text-[56px] lg:text-[64px]">
-            Transforming Ideas Into
+            Transforming <span className="text-[#188BF6]">Ideas</span> Into
             <br />
             Intelligent Solutions
           </h1>
@@ -147,12 +147,12 @@ function CapabilitiesPage() {
             experience, tools, and track record to back it up.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
-            <button className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[15px] font-bold font-nunito text-white shadow-sm transition-colors hover:bg-[#0076E5]">
+            <Link to="/contact#contact-form" className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[15px] font-bold font-nunito text-white shadow-sm hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Book a Free Consultation
-            </button>
-            <button className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[15px] font-bold font-nunito text-[#188BF6] transition-colors hover:bg-blue-50">
+            </Link>
+            <Link to="/it-services" className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[15px] font-bold font-nunito text-[#188BF6] hover:border-transparent hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Explore Our Services
-            </button>
+            </Link>
           </div>
         </Reveal>
       </section>
@@ -259,7 +259,7 @@ function CapabilitiesPage() {
               className="absolute top-[60%] -translate-y-1/2 -right-20 h-[400px] w-[250px] object-cover object-right max-w-none pointer-events-none rotate-180"
               aria-hidden
             />
-            
+
             <h2 className="relative z-10 text-[32px] sm:text-[36px] font-bold font-raleway leading-[1.2] text-black">
               Not Sure Which Capability You
               <br className="hidden sm:block" />

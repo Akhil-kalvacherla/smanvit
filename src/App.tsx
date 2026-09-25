@@ -9,6 +9,8 @@ import Industries from './routes/industries';
 import ItServices from './routes/it-services';
 import Partnership from './routes/partnership';
 
+import NotFound from './routes/not-found';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -22,7 +24,7 @@ export default function App() {
         <Route path="/industries" element={<Industries />} />
         <Route path="/it-services" element={<ItServices />} />
         <Route path="/partnership" element={<Partnership />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

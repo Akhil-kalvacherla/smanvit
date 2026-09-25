@@ -130,7 +130,7 @@ const CONNECTORS = [
 interface Reason {
   title: string;
   body: string;
-  icon: LucideIcon;
+  icon: string;
   tone: "navy" | "light";
 }
 
@@ -138,31 +138,31 @@ const REASONS = [
   {
     title: "Compliance-Ready by Default",
     body: "Every solution we build is designed with security and regulatory standards in mind.",
-    icon: ShieldCheck,
+    icon: "/assets/export-svgrepo-com 1.png",
     tone: "navy",
   },
   {
     title: "Scalable as You Grow",
     body: "Our model is built to scale, from a 2-person startup to a 500-person enterprise.",
-    icon: TrendingUp,
+    icon: "/assets/scale.png",
     tone: "light",
   },
   {
     title: "Global Expertise, Local Presence",
     body: "Hyderabad-based team serving clients in UAE, US, UK, and Europe.",
-    icon: Globe,
+    icon: "/assets/global-svgrepo-com 1.png",
     tone: "navy",
   },
   {
     title: "End-to-End Delivery",
     body: "From first strategy call to final launch, one team, zero handover chaos.",
-    icon: Workflow,
+    icon: "/assets/feeld-svgrepo-com 1.png",
     tone: "light",
   },
   {
     title: "Transparent & On-Time",
     body: "Clear timelines, weekly updates, and honest communication. Always.",
-    icon: Clock,
+    icon: "/assets/time-fast-svgrepo-com 1.png",
     tone: "navy",
   },
 ] as const satisfies readonly Reason[];
@@ -323,21 +323,21 @@ function Connectors() {
   );
 }
 
-function ReasonCard({ reason }: { reason: Reason }) {
-  const Icon = reason.icon;
+function ReasonCard({ reason, className = "" }: { reason: Reason; className?: string }) {
   const isNavy = reason.tone === "navy";
   return (
     <article
-      className={`interactive-card flex h-full flex-col justify-end rounded-2xl p-6 ${isNavy ? "bg-navy text-navy-foreground" : "bg-soft-grey text-ink"
-        }`}
+      className={`interactive-card flex h-full flex-col justify-end rounded-2xl p-6 ${isNavy ? "bg-navy text-navy-foreground" : "bg-soft-grey text-ink"} ${className}`}
     >
-      <Icon
-        className={`mb-8 size-9 ${isNavy ? "text-navy-foreground" : "text-brand"}`}
+      <img
+        src={reason.icon}
+        alt=""
+        className="mb-6 h-14 sm:h-16 w-auto object-contain self-start"
         aria-hidden
       />
-      <h3 className="text-[16px] leading-snug font-bold font-raleway">{reason.title}</h3>
+      <h3 className="text-[20px] sm:text-[22px] font-bold font-raleway leading-[1.3]">{reason.title}</h3>
       <p
-        className={`mt-3 text-[14px] font-medium leading-[1.65] font-nunito ${isNavy ? "text-navy-foreground" : "text-black"}`}
+        className={`mt-3 text-[15px] sm:text-[16px] font-medium leading-[1.6] font-nunito ${isNavy ? "text-navy-foreground/90" : "text-black/80"}`}
       >
         {reason.body}
       </p>
@@ -484,35 +484,36 @@ export function Home() {
       <section
         ref={heroRef}
         id="home"
-        className="relative isolate overflow-hidden bg-gradient-to-b from-white via-[#F6F9FF] to-[#EDF3FF] -mt-[88px] pt-[104px] pb-16 lg:pb-24 text-ink"
+        className="relative isolate overflow-hidden bg-white -mt-[120px] pt-[156px] pb-16 lg:pb-24"
       >
-        {/* Exact Inline Vector_hero SVG Artworks (Zero Clipping / Zero Border Lines) */}
-        <HeroVectorBg
-          idSuffix="left"
-          className="absolute -top-10 -left-24 w-[600px] h-auto opacity-80"
-        />
-        <HeroVectorBg
-          idSuffix="right"
-          className="absolute bottom-0 -right-24 w-[600px] h-auto opacity-80 scale-x-[-1]"
-        />
-
-        {/* Soft Radial Backlight Glows */}
-        <div className="absolute top-0 left-0 size-[600px] -translate-x-1/4 -translate-y-1/4 rounded-full bg-[#188BF6]/15 blur-[120px] pointer-events-none -z-10" />
-        <div className="absolute bottom-10 right-0 size-[500px] translate-x-1/4 rounded-full bg-[#833AB4]/10 blur-[120px] pointer-events-none -z-10" />
+        {/* Background Video */}
+        <div className="absolute top-0 left-0 -z-20 w-full h-[85vh] min-h-[700px] overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/assets/homeVideo.mp4" type="video/mp4" />
+          </video>
+          {/* Dark overlay for text readability & fade to white at bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B3D]/40 via-[#0B1B3D]/20 to-white" />
+        </div>
 
         <div className="mx-auto max-w-[1240px] px-6 w-full flex flex-col items-center text-center">
           {/* Top Pill Badge */}
           <span
             data-hero-animate
-            className="inline-flex items-center gap-2 rounded-full border border-slate-300/80 bg-white/70 backdrop-blur-md px-4 py-1.5 text-xs font-bold text-black shadow-xs"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-5 py-2 text-xs font-medium text-white shadow-xs"
           >
-            Technology + Marketing – All Under One Roof
+            Technology + Marketing - All Under One Roof
           </span>
 
           {/* Main Centered Title */}
           <h1
             data-hero-animate
-            className="mt-6 text-[48px] sm:text-[56px] font-bold font-raleway tracking-tight text-[#0B1B3D] leading-[1.15]"
+            className="mt-6 text-[48px] sm:text-[56px] font-bold font-raleway tracking-tight text-white leading-[1.15]"
           >
             Your Business
             <br />
@@ -524,22 +525,22 @@ export function Home() {
           {/* Subtitle */}
           <p
             data-hero-animate
-            className="mt-6 text-[15px] sm:text-[16px] lg:text-[17px] leading-relaxed font-bold font-nunito text-black max-w-none"
+            className="mt-6 text-[15px] sm:text-[16px] lg:text-[17px] leading-relaxed font-medium font-nunito text-white/90 max-w-4xl"
           >
             From Web &amp; App Development to AI Solutions, Digital Marketing and Compliance. We Deliver It All.
           </p>
 
           {/* CTA Buttons */}
-          <div data-hero-animate className="mt-8 flex flex-row flex-wrap items-center justify-center gap-4">
+          <div data-hero-animate className="mt-10 flex flex-row flex-wrap items-center justify-center gap-5">
             <Link
               to="/contact"
-              className="rounded-full bg-[#188BF6] px-7 py-3 text-[15px] sm:text-[16px] font-semibold leading-none font-nunito text-white shadow-sm hover:bg-[#0076E5] transition-all"
+              className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold leading-none font-nunito text-white shadow-sm hover:bg-[#0076E5] transition-all"
             >
               Book a Free Consultation
             </Link>
             <Link
               to="/it-services"
-              className="rounded-full border border-[#188BF6] bg-transparent px-7 py-3 text-[15px] sm:text-[16px] font-semibold leading-none font-nunito text-[#188BF6] shadow-xs hover:bg-[#188BF6]/10 transition-all"
+              className="rounded-full bg-white px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold leading-none font-nunito text-[#188BF6] shadow-md hover:bg-white/90 transition-all"
             >
               Explore Our Services
             </Link>
@@ -550,12 +551,12 @@ export function Home() {
             data-hero-animate
             className="relative mt-8 sm:mt-12 w-full max-w-[1080px] grid grid-cols-1 lg:grid-cols-12 items-center gap-6"
           >
-            {/* Left Stat: 50+ Clients Worldwide */}
+            {/* Left Stat: 20+ Clients Worldwide */}
             <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left space-y-1">
-              <span className="text-[40px] sm:text-[44px] font-bold font-raleway text-[#0B1B3D] tracking-tight leading-[1.1]">
-                50+
+              <span className="text-[48px] sm:text-[56px] font-bold font-raleway text-[#0B1B3D] tracking-tight leading-[1.1]">
+                20+
               </span>
-              <span className="text-[13px] sm:text-[14px] font-bold font-nunito leading-[1.5] text-black">
+              <span className="text-[14px] sm:text-[15px] font-semibold font-nunito leading-[1.5] text-slate-800">
                 Clients Worldwide
               </span>
             </div>
@@ -564,10 +565,10 @@ export function Home() {
             <div className="lg:col-span-6 relative flex flex-col items-center justify-center">
               {/* 12+ Service Areas (Positioned top-right relative to image on desktop) */}
               <div className="lg:absolute lg:-top-8 lg:right-4 flex flex-col items-center lg:items-start text-center lg:text-left mb-4 lg:mb-0 z-20">
-                <span className="text-[40px] sm:text-[44px] font-bold font-raleway text-[#0B1B3D] tracking-tight leading-[1.1]">
+                <span className="text-[48px] sm:text-[56px] font-bold font-raleway text-[#0B1B3D] tracking-tight leading-[1.1]">
                   12+
                 </span>
-                <span className="text-[13px] sm:text-[14px] font-bold font-nunito leading-[1.5] text-black">
+                <span className="text-[14px] sm:text-[15px] font-semibold font-nunito leading-[1.5] text-slate-800">
                   Service Areas
                 </span>
               </div>
@@ -580,13 +581,13 @@ export function Home() {
               />
             </div>
 
-            {/* Right Stat: 100% Compliance Ready */}
-            <div className="lg:col-span-3 flex flex-col items-center lg:items-end text-center lg:text-right space-y-1">
-              <span className="text-[40px] sm:text-[44px] font-bold font-raleway text-[#0B1B3D] tracking-tight leading-[1.1]">
-                100%
+            {/* Right Stat: 30+ Projects */}
+            <div className="lg:col-span-3 flex flex-col items-center lg:items-end text-center lg:text-right space-y-1 lg:mt-32">
+              <span className="text-[48px] sm:text-[56px] font-bold font-raleway text-[#0B1B3D] tracking-tight leading-[1.1]">
+                30+
               </span>
-              <span className="text-[13px] sm:text-[14px] font-bold font-nunito leading-[1.5] text-black">
-                Compliance Ready
+              <span className="text-[14px] sm:text-[15px] font-semibold font-nunito leading-[1.5] text-slate-800">
+                Projects
               </span>
             </div>
           </div>
@@ -626,58 +627,46 @@ export function Home() {
             <h3 className="text-[16px] sm:text-[18px] font-bold font-raleway leading-[1.4] text-black tracking-wide mb-4">
               Approved By
             </h3>
-            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+            <div className="flex w-full max-w-4xl flex-wrap items-center justify-evenly gap-8">
               <img
                 src="/assets/Ministry of Micro, Small and Medium Enterprises Logo PNG Vector (SVG) Free Download 1.png"
                 alt="Ministry of MSME"
-                className="h-16 sm:h-24 w-auto object-contain mix-blend-multiply"
+                className="h-10 sm:h-16 w-auto object-contain mix-blend-multiply"
               />
               <img
-                src="/assets/startup_india_logo.png.jpg"
+                src="/assets/startup_india_logo.png.png"
                 alt="Startup India"
-                className="h-14 sm:h-20 w-auto object-contain mix-blend-multiply"
+                className="h-8 sm:h-14 w-auto object-contain mix-blend-multiply"
               />
               <img
-                src="/assets/image 114.jpg"
+                src="/assets/image 114.png"
                 alt="Department for Promotion of Industry and Internal Trade"
-                className="h-14 sm:h-20 w-auto object-contain mix-blend-multiply"
+                className="h-8 sm:h-14 w-auto object-contain mix-blend-multiply"
               />
             </div>
           </Reveal>
 
           {/* Trusted By Section */}
-          <div data-hero-animate className="mt-12 w-full flex flex-col items-center">
+          <div data-hero-animate className="mt-20 lg:mt-24 w-full flex flex-col items-center">
             <h3 className="text-[16px] sm:text-[18px] font-bold font-raleway leading-[1.4] text-black tracking-wide">
               Trusted By
             </h3>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16">
-              {/* Logos matching Figma Image 2 */}
-              <div className="flex items-center gap-2 text-slate-800 font-bold text-lg">
-                <span className="grid size-8 place-items-center rounded-full bg-orange-500 text-white font-extrabold">
-                  ◎
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-[#1877F2] font-bold text-xl">
-                <span className="text-2xl font-black">mcc</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-900 font-bold text-lg">
-                <span className="grid size-7 place-items-center rounded-md border-2 border-slate-900 font-black text-xs">
-                  |||
-                </span>
-                <span>Terra</span>
-              </div>
-              <div className="flex items-center gap-2 text-teal-600 font-bold text-lg">
-                <span className="grid size-7 place-items-center rounded-full bg-teal-500 text-white font-bold">
-                  ◈
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-indigo-600 font-bold text-lg">
-                <span className="grid size-7 place-items-center text-indigo-600 font-bold">
-                  ❖
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-900 font-extrabold text-xl">
-                <span className="text-blue-600">↖</span> Nextmove
+            <div className="relative mt-16 flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+              <div className="flex w-max animate-marquee items-center hover:[animation-play-state:paused]">
+                {[0, 1, 2, 3].map((i) => (
+                  <div key={i} className="flex shrink-0 items-center gap-10 sm:gap-14 md:gap-16 lg:gap-20 pr-10 sm:pr-14 md:pr-16 lg:pr-20">
+                    <img src="/assets/logos/Layer 1.png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/Logo (1).png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/Logo (2).png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/Logo.jpg" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/Logo.png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/Proline.png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/concentrix.png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/deloitte_logo.svg.png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/sutherland_icon.jpeg.png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                    <img src="/assets/logos/tech_mahindra_logo.svg.png" alt="Trusted Partner" className="h-6 sm:h-8 md:h-10 w-auto object-contain shrink-0" />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -693,8 +682,7 @@ export function Home() {
             {INFO_CARDS.map((card) => (
               <article
                 key={card.title}
-                className={`interactive-card rounded-[26px] p-8 ${card.tone === "blue" ? "bg-soft-blue" : "bg-soft-pink"
-                  }`}
+                className="interactive-card rounded-[26px] p-8 bg-soft-blue"
               >
                 <h3 className="text-[20px] sm:text-[22px] font-bold font-raleway leading-[1.3] text-black">{card.title}</h3>
                 <p className="mt-4 text-[15px] sm:text-[16px] font-medium font-nunito leading-[1.6] text-black">{card.body}</p>
@@ -833,11 +821,11 @@ export function Home() {
             We&apos;re the team that grows with you.
           </p>
 
-          <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <ReasonCard reason={REASONS[0]} />
-            <ReasonCard reason={REASONS[1]} />
-            <ReasonCard reason={REASONS[2]} />
-            <div className="row-span-2 grid place-items-center rounded-2xl bg-soft-grey p-6">
+          <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-8">
+            <ReasonCard reason={REASONS[0]} className="lg:col-span-2" />
+            <ReasonCard reason={REASONS[1]} className="lg:col-span-2" />
+            <ReasonCard reason={REASONS[2]} className="lg:col-span-2" />
+            <div className="row-span-2 grid place-items-center rounded-2xl bg-soft-blue p-6 lg:col-span-2">
               <img
                 src="/assets/questions.png"
                 alt="Illustration of a person leaning on a large question mark"
@@ -845,8 +833,8 @@ export function Home() {
                 loading="lazy"
               />
             </div>
-            <ReasonCard reason={REASONS[3]} />
-            <ReasonCard reason={REASONS[4]} />
+            <ReasonCard reason={REASONS[3]} className="lg:col-span-3" />
+            <ReasonCard reason={REASONS[4]} className="lg:col-span-3" />
           </Reveal>
         </div>
       </section>

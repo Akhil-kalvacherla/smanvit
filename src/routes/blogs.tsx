@@ -17,7 +17,7 @@ function BlogsPage() {
           <h1 className="text-[40px] font-bold font-raleway leading-[1.1] tracking-tight text-black sm:text-[48px] md:text-[56px] lg:text-[64px]">
             Technology, Insights & Ideas
             <br />
-            That Move Business Forward
+            That Move <span className="text-[#188BF6]">Business Forward</span>
           </h1>
           <p className="mt-8 max-w-[850px] text-[16px] font-semibold font-nunito leading-[1.5] text-[#1F2937] sm:text-[18px] md:text-[20px]">
             Explore expert perspectives, emerging technologies, and practical insights to navigate
@@ -46,7 +46,7 @@ function BlogsPage() {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                
+
                 <div className="relative z-10 -mt-8 flex flex-1 flex-col rounded-[32px] bg-[#F8F9FA] p-6 sm:p-7">
                   <div className="flex items-center justify-between">
                     <span className="rounded-full bg-[#EAF3FF] px-3 py-1 text-[10px] sm:text-[11px] font-bold text-[#188BF6]">
@@ -56,7 +56,7 @@ function BlogsPage() {
                       {post.date}
                     </span>
                   </div>
-                  
+
                   <div className="mt-3 flex items-center gap-1.5 text-gray-500">
                     <Clock className="size-3.5" />
                     <span className="text-[12px] font-medium">{post.readTime}</span>
@@ -65,7 +65,7 @@ function BlogsPage() {
                   <h3 className="mt-3 text-[17px] sm:text-[18px] font-semibold leading-tight font-raleway text-[#1A2359]">
                     {post.title}
                   </h3>
-                  
+
                   <p className="mt-3 text-[13px] sm:text-[14px] font-medium leading-relaxed font-nunito text-gray-600">
                     {post.description}
                   </p>

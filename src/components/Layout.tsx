@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import gsap from "gsap";
@@ -118,6 +118,9 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+  const isTransparent = isHomePage && !isScrolled;
 
   useEffect(() => {
     // Set initial value
@@ -166,9 +169,9 @@ export function Navbar() {
                 end={link.to === "/"}
                 className={({ isActive }) =>
                   `pb-1 text-[15px] font-medium leading-none transition-colors hover:text-brand ${
-                    isActive && link.label !== "Blogs" && link.label !== "Partnership"
+                    isActive
                       ? "text-brand border-b-2 border-brand"
-                      : "text-ink/75"
+                      : isTransparent ? "text-white/90" : "text-ink/75"
                   }`
                 }
               >
@@ -207,7 +210,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `block rounded-lg px-3 py-2 text-[15px] font-medium leading-none hover:bg-background ${
-                    isActive && link.label !== "Blogs" && link.label !== "Partnership"
+                    isActive
                       ? "bg-background text-brand"
                       : "text-ink"
                   }`
@@ -363,14 +366,14 @@ export function CtaBand() {
             </p>
             <div className="mt-7 flex flex-wrap gap-4">
               <Link
-                to="/contact"
+                to="/contact#contact-form"
                 className="rounded-full bg-[#188BF6] px-7 py-3 text-[14px] font-semibold font-nunito text-white shadow-sm hover:bg-[#0076E5] transition-all"
               >
                 Book a Free Consultation
               </Link>
               <Link
-                to="/contact"
-                className="rounded-full border border-[#188BF6] bg-white px-7 py-3 text-[14px] font-semibold font-nunito text-[#188BF6] hover:bg-[#188BF6]/5 transition-all"
+                to="/contact#contact-form"
+                className="rounded-full border border-[#188BF6] bg-white px-7 py-3 text-[14px] font-semibold font-nunito text-[#188BF6] hover:border-transparent hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] transition-all"
               >
                 Talk to Us
               </Link>
@@ -547,17 +550,27 @@ function PageTransition({ children }: { children: ReactNode }) {
   );
 }
 
-export function SiteLayout({ children, hideCtaBand }: { children: ReactNode, hideCtaBand?: boolean }) {
+export function SiteLayout({ 
+  children, 
+  hideCtaBand,
+  hideFooter,
+  hideSocials
+}: { 
+  children: ReactNode; 
+  hideCtaBand?: boolean;
+  hideFooter?: boolean;
+  hideSocials?: boolean;
+}) {
   useSmoothScroll();
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <SocialRail />
+      {!hideSocials && <SocialRail />}
       <main>
         <PageTransition>{children}</PageTransition>
       </main>
       {!hideCtaBand && <CtaBand />}
-      <Footer />
+      {!hideFooter && <Footer />}
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default PartnershipPage;
 
 function PartnershipPage() {
   const [projectValue, setProjectValue] = useState<number>(30000);
-  
+
   const commission = projectValue * 0.1;
 
   // Format currency
@@ -26,24 +26,24 @@ function PartnershipPage() {
       <section className="relative w-full bg-white pb-20 pt-16 lg:pt-24">
         <div className="mx-auto w-full max-w-[1240px] px-6 lg:px-8">
           <Reveal className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8" stagger={0.2}>
-            
+
             {/* Left Column: Text & Buttons */}
             <div className="flex flex-col items-start text-left max-w-[600px]">
               <h1 className="text-[40px] font-bold leading-[1.15] font-raleway text-[#111827] sm:text-[48px] lg:text-[56px]">
-                Every project you refer pays you back automatically
+                Every project you refer <span className="text-[#188BF6]">pays you</span> back automatically
               </h1>
-              
+
               <p className="mt-5 text-[17px] font-semibold leading-relaxed font-nunito text-[#374151] sm:text-[18px]">
                 Flat 10% commission on every closed referral. We handle the pitch, delivery, and support, you just make the introduction.
               </p>
-              
+
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <button className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[16px] font-normal font-nunito text-white transition-colors hover:bg-blue-600">
+                <Link to="/contact#contact-form" className="rounded-full bg-[#188BF6] px-8 py-3.5 text-[16px] font-normal font-nunito text-white hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
                   Become a Partner
-                </button>
+                </Link>
                 <Link
                   to="/it-services"
-                  className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[16px] font-normal font-nunito text-[#188BF6] transition-colors hover:bg-[#EAF3FF]"
+                  className="rounded-full border border-[#188BF6] bg-white px-8 py-3.5 text-[16px] font-normal font-nunito text-[#188BF6] hover:border-transparent hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all"
                 >
                   Explore Our Services
                 </Link>
@@ -56,12 +56,12 @@ function PartnershipPage() {
                 <h3 className="text-[20px] font-medium text-black font-raleway">
                   Estimate your commission
                 </h3>
-                
+
                 <div className="mt-10 flex items-end justify-between">
                   <span className="text-[16px] font-medium text-gray-500 font-nunito">Project value</span>
                   <span className="text-[22px] font-medium font-sans text-black">{formatCurrency(projectValue)}</span>
                 </div>
-                
+
                 {/* Custom Slider */}
                 <div className="relative mt-5 h-8 flex items-center">
                   <input
@@ -76,19 +76,19 @@ function PartnershipPage() {
                   {/* Slider Track Background */}
                   <div className="absolute w-full h-[6px] rounded-full bg-gray-200"></div>
                   {/* Slider Track Fill */}
-                  <div 
+                  <div
                     className="absolute h-[6px] rounded-full bg-[#0A1B3F]"
                     style={{ width: `${((projectValue - 5000) / 95000) * 100}%` }}
                   ></div>
                   {/* Slider Thumb */}
-                  <div 
+                  <div
                     className="absolute size-5 rounded-full border-[4px] border-[#0A1B3F] bg-white pointer-events-none -ml-2.5 shadow-sm"
                     style={{ left: `${((projectValue - 5000) / 95000) * 100}%` }}
                   ></div>
                 </div>
-                
+
                 <div className="mt-8 h-[1px] w-full bg-gray-100"></div>
-                
+
                 <div className="mt-8 flex items-baseline gap-4">
                   <span className="text-[15px] font-medium text-gray-500 font-nunito">You earn</span>
                   <div className="flex items-baseline gap-2">
@@ -98,7 +98,7 @@ function PartnershipPage() {
                 </div>
               </div>
             </div>
-            
+
           </Reveal>
         </div>
       </section>
@@ -178,7 +178,7 @@ function PartnershipPage() {
               Services
             </span>
           </div>
-          
+
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
             {/* Service Card 1 */}
             <div className="flex items-start gap-4 rounded-[20px] border border-gray-200 bg-white p-5 text-left shadow-[0_12px_30px_-10px_rgba(0,0,0,0.08)] sm:p-6 transition-colors hover:border-gray-300">
@@ -281,9 +281,9 @@ function PartnershipPage() {
       {/* Apply Form Section */}
       <section className="relative w-full overflow-hidden bg-[#C9E2FA] mb-16 md:mb-24">
         {/* Frame.png positioned on the right */}
-        <img 
-          src="/assets/Frame.png" 
-          alt="" 
+        <img
+          src="/assets/Frame.png"
+          alt=""
           className="absolute right-0 top-0 h-full w-auto object-cover object-right pointer-events-none select-none"
         />
 
@@ -298,58 +298,58 @@ function PartnershipPage() {
 
           <div className="mx-auto mt-5 w-full max-w-[460px] rounded-[20px] bg-white p-5 text-left shadow-[0_15px_50px_rgba(0,0,0,0.08)] sm:p-7">
             <form className="flex flex-col gap-3">
-              
+
               <div className="flex flex-col gap-1">
                 <label className="text-[13px] font-semibold text-gray-900 font-raleway">Full name</label>
-                <input 
-                  type="text" 
-                  placeholder="Jordan Reyes" 
+                <input
+                  type="text"
+                  placeholder="Jordan Reyes"
                   className="w-full rounded-lg bg-[#F9FAFB] px-3.5 py-2 text-[14px] text-gray-900 placeholder-gray-400 outline-none transition-all focus:ring-2 focus:ring-[#188BF6]/20 font-nunito"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
                 <label className="text-[13px] font-semibold text-gray-900 font-raleway">Email</label>
-                <input 
-                  type="email" 
-                  placeholder="jordan@company.com" 
+                <input
+                  type="email"
+                  placeholder="jordan@company.com"
                   className="w-full rounded-lg bg-[#F9FAFB] px-3.5 py-2 text-[14px] text-gray-900 placeholder-gray-400 outline-none transition-all focus:ring-2 focus:ring-[#188BF6]/20 font-nunito"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
                 <label className="text-[13px] font-semibold text-gray-900 font-raleway">Your role</label>
-                <input 
-                  type="text" 
-                  placeholder="Select your role" 
+                <input
+                  type="text"
+                  placeholder="Select your role"
                   className="w-full rounded-lg bg-[#F9FAFB] px-3.5 py-2 text-[14px] text-gray-900 placeholder-gray-400 outline-none transition-all focus:ring-2 focus:ring-[#188BF6]/20 font-nunito"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
                 <label className="text-[13px] font-semibold text-gray-900 font-raleway">LinkedIn/Website</label>
-                <input 
-                  type="text" 
-                  placeholder="linkedin.com/in/john" 
+                <input
+                  type="text"
+                  placeholder="linkedin.com/in/john"
                   className="w-full rounded-lg bg-[#F9FAFB] px-3.5 py-2 text-[14px] text-gray-900 placeholder-gray-400 outline-none transition-all focus:ring-2 focus:ring-[#188BF6]/20 font-nunito"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
                 <label className="text-[13px] font-semibold text-gray-900 font-raleway">How do you plan to refer clients</label>
-                <input 
-                  type="text" 
-                  placeholder="Select referral method" 
+                <input
+                  type="text"
+                  placeholder="Select referral method"
                   className="w-full rounded-lg bg-[#F9FAFB] px-3.5 py-2 text-[14px] text-gray-900 placeholder-gray-400 outline-none transition-all focus:ring-2 focus:ring-[#188BF6]/20 font-nunito"
                 />
               </div>
 
               <div className="mt-3 flex justify-center">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className="rounded-full bg-[#188BF6] px-8 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-blue-600 font-nunito"
                 >
-                  Explore Our Services
+                  Send Request
                 </button>
               </div>
 

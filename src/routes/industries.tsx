@@ -143,7 +143,7 @@ function IndustriesPage() {
       <section className="relative bg-white pt-32 pb-16 px-6 overflow-hidden">
         <Reveal className="relative mx-auto flex max-w-[1080px] flex-col items-center text-center" stagger={0.1}>
           <h1 className="text-[40px] font-bold font-raleway leading-[1.1] tracking-tight text-black sm:text-[48px] md:text-[56px] lg:text-[64px]">
-            Whatever Your Industry
+            Whatever Your <span className="text-[#188BF6]">Industry</span>
             <br />
             We Know Your World
           </h1>
@@ -153,10 +153,10 @@ function IndustriesPage() {
             sectors. Browse your industry and see exactly what SMANV can do for your business
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
-            <Link to="/contact" className="rounded-full bg-[#0084FF] px-8 py-3.5 text-[15px] font-semibold font-nunito text-white shadow-sm transition-colors hover:bg-[#0070D6]">
+            <Link to="/contact#contact-form" className="rounded-full bg-[#0084FF] px-8 py-3.5 text-[15px] font-semibold font-nunito text-white shadow-sm hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Book a Free Consultation
             </Link>
-            <Link to="/it-services" className="rounded-full border border-[#0084FF] bg-white px-8 py-3.5 text-[15px] font-semibold font-nunito text-[#0084FF] transition-colors hover:bg-blue-50">
+            <Link to="/it-services" className="rounded-full border border-[#0084FF] bg-white px-8 py-3.5 text-[15px] font-semibold font-nunito text-[#0084FF] hover:border-transparent hover:bg-gradient-to-r hover:from-[#0094FF] hover:to-[#0052A3] hover:text-white active:!bg-none active:!bg-[#002855] active:text-white transition-all">
               Explore Our Services
             </Link>
           </div>
